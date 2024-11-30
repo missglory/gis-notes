@@ -1,0 +1,9 @@
+services:
+  maplibre:
+    build:
+      context: .
+      dockerfile: maplibre.Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3003:5173"
