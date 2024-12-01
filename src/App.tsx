@@ -41,7 +41,7 @@ const App: React.FC = () => {
     const protocol = new Protocol();
     maplibregl.addProtocol("pmtiles", protocol.tile);
 
-    const PMTILES_URL = process.env.REACT_APP_PMTILES_URL ?? "https://pmtiles.io/protomaps(vector)ODbL_firenze.pmtiles";
+    const PMTILES_URL = import.meta.env.VITE_PMTILES_URL ?? "https://pmtiles.io/protomaps(vector)ODbL_firenze.pmtiles";
     [0];
     const p = new PMTiles(PMTILES_URL);
 
