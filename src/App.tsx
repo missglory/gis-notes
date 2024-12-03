@@ -142,6 +142,51 @@ const App: React.FC = () => {
 
     map.addControl(deckOverlay);
 
+
+    map.on('style.load', () => {
+      const firstLabelLayerId = map
+        .getStyle()
+        .layers.find((layer) => layer.type === "symbol").id;
+
+      map.removeLayer("building");
+      map.removeLayer("building-top");
+      map.addLayer(
+        {
+          id: "3d-buildings",
+          source: "carto",
+          "source-layer": "building",
+          type: "fill-extrusion",
+          minzoom: 15,
+          paint: {
+            "fill-extrusion-color": "#aaa",
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "render_height"],
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "render_min_height"],
+            ],
+            "fill-extrusion-opacity": 0.6,
+          },
+        },
+        firstLabelLayerId
+      );
+    });
+
     return () => {
       // if (map) {
       //   map.remove();
