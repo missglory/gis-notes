@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@deck.gl/mapbox": "^9.0.36",
+    "deck.gl": "^9.0.36",
     "maplibre-gl": "^4.5.0",
     "pmtiles": "^4.0.1"
   },
   "devDependencies": {
     "@types/maplibre-gl": "^1.14.0",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
